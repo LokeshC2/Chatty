@@ -1,4 +1,4 @@
-import { Box, Typography, Card, CardHeader, CardContent } from "@material-ui/core";
+import { Box, Typography, Card, CardHeader, CardContent } from "@mui/material";
 import React, { useEffect, useState } from "react"
 
 const message = {

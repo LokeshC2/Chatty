@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Box, Button, TextField} from "@material-ui/core";
+import {Box, Button, TextField} from "@mui/material";
 
 
 export default function Config({setUserId, setRoomId, login}) {

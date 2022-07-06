@@ -1,5 +1,5 @@
 import React from 'react'
-import { AppBar, Box, Button, Paper, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Box, Button, Paper, Toolbar, Typography } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat"
 
 export default function Bar({ loggedIn, roomId, userId, logout }) {
