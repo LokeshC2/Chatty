@@ -15,15 +15,18 @@ export default function Bar({ loggedIn, roomId, userId, logout }) {
           </Typography>
 
           {loggedIn &&
-            <Box display={"flex"} flexGrow={1} flexDirection={"row"} justifyContent={"space-between"}>
+            <Box display={"flex"} flexGrow={1} flexDirection={"row"} justifyContent={"space-between"} alignItems={"center"}>
               <Typography variant="h4">
                 &nbsp;{userId}
               </Typography>
               <Typography variant="h4" elevation={1} style={{"marginLeft":"-10%"}}>
                 Room: {roomId}
               </Typography>
-              <Button variant="contained" onClick={logout}>
-                <Typography variant="h6">
+              <Button variant="contained" onClick={logout} sx={
+                [{backgroundColor: "white"},
+                 {"&:hover":{backgroundColor: "#dddc"}}]
+                 }>
+                <Typography variant="h6" color={"primary"} >
                   Logout
                 </Typography>
               </Button>
@@ -31,7 +34,8 @@ export default function Bar({ loggedIn, roomId, userId, logout }) {
           }
         </Toolbar>
       </AppBar>
-      <Toolbar />
+      {/* use empty toolbar wen logged in to prevent from appbar overlapping content */}
+      {loggedIn && <Toolbar />}   
     </Box>
   )
 }

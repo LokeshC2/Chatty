@@ -1,27 +1,34 @@
-import { Box, Typography, Card, CardHeader, CardContent } from "@mui/material";
+import { Box, Typography, Card, CardContent } from "@mui/material";
 import React, { useEffect, useState } from "react"
 
 const message = {
   id: "001",
   sender: "Lox",
   content: "Heya",
-  timestamp: new Date("2020-01-01T00:00:00.000Z")
+  timestamp: "2020-01-01T00:00:00.000Z"
 }
-export default function Chat(userId, roomId) {
+
+export default function Chat({userId, roomId}) {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState("")
 
   useEffect(() => {
+    console.log(`/api/chat/${roomId}`)
     fetch(`/api/chat/${roomId}`)
       .then(res => res.json())
-      .then(data => setMessages(data))
-  }, [])
+      .then(data => {
+        data = data.map( 
+          d => { return { ...d, timestamp: new Date(d.timestamp) }} 
+          );
+        setMessages(data)
+      })
+  }, [userId, roomId])
 
   return (
     <>
-      <Box flexDirection="column-reverse" mb={1}>
+      <Box display={"flex"} flexDirection="column" mb={1}>
         {messages.map(message => (
-          <Card elevation={3}>
+          <Card variant="outlined" elevation={1} sx={{margin:"1em"}}>
             <CardContent>
               <Typography variant="p">
                 {message.content}

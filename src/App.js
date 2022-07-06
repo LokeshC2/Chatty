@@ -29,7 +29,7 @@ export default function App() {
     <>
       <Bar {...{ loggedIn, roomId, userId, logout }} />
       {(loggedIn)
-        ? <Chat user={userId} room={roomId} />
+        ? <Chat userId={userId} roomId={roomId} />
         : <Config {...{ setUserId, setRoomId, login }} />}
     </>
   )
